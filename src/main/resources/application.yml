@@ -25,6 +25,6 @@ spring:
 #  expiry: 360000
 
 server:
-  port: 8080
+  port: 8002
   servlet:
     context-path: /
