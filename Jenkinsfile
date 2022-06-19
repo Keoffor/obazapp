@@ -5,7 +5,7 @@ pipeline{
             steps{
                 sh 'echo "Hello world" '
                 withMaven {
-                    sh 'mvn  clean test'
+                    sh 'mvn  clean'
                  } 
             }
           
