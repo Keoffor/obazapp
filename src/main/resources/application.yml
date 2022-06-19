@@ -1,6 +1,6 @@
 spring:
   application:
-    name: devOps-App
+    name: devopsApp
   datasource:
     username: obaz-sql
     password: Dreams16
