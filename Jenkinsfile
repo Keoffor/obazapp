@@ -1,5 +1,8 @@
 pipeline{
     agent any
+      environment {
+        VERSION = "${env.BUILD_ID}"
+    }
     stages{
         stage("Test"){
             steps{
@@ -13,6 +16,7 @@ pipeline{
             steps{
                script{ 
                  withSonarQubeEnv(credentialsId: 'sonar-token') {
+                     sh 'chmod +x mvnw'
                      sh './mvnw sonar:sonar -Dsonar.host.url=http://35.193.175.91:9000 -Dsonar.login=f5f186e6b3c2cad9a4535bc5ea2798d8e21bd51d'
                  }
                         timeout(time: 15, unit: 'MINUTES') {
@@ -31,6 +35,21 @@ pipeline{
                  } 
             }
           
+        }
+        stage("Docker build and push"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_cred')]) {
+                     sh '''
+                       docker build -t keoffor/devops-img:${VERSION} . 
+                       docker login -u keoffor -p $docker_cred  
+                       docker push  keoffor/devops-img:${VERSION}
+                       docker rmi keoffor/devops-img:${VERSION}
+                    ''' 
+                }
+
+                }
+            }
         }
     }
   
