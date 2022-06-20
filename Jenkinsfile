@@ -9,6 +9,16 @@ pipeline{
             }
           
         }
+        stage("Sonar code analysis"){
+            steps{
+               script{ 
+                 withSonarQubeEnv(credentialsId: 'sonar-token') {
+                     sh 'chmod +x mvnw'
+                     sh ''
+                 }
+               } 
+            }
+        }
          stage("build package"){
             steps{
                 withMaven {
