@@ -17,7 +17,7 @@ pipeline{
                script{ 
                  withSonarQubeEnv(credentialsId: 'sonar-token') {
                      sh 'chmod +x mvnw'
-                     sh './mvnw sonar:sonar -Dsonar.host.url=http://35.193.175.91:9000 -Dsonar.login=f5f186e6b3c2cad9a4535bc5ea2798d8e21bd51d'
+                     sh './mvnw sonar:sonar -Dsonar.host.url=http://34.135.106.86:9000 -Dsonar.login=f5f186e6b3c2cad9a4535bc5ea2798d8e21bd51d'
                  }
                         timeout(time: 15, unit: 'MINUTES') {
                       def qg = waitForQualityGate()
@@ -51,6 +51,16 @@ pipeline{
                 }
             }
         }
+      stage("Datree configuration check on helm chart"){
+        steps{
+            script{
+                dir('Kubernetes/') {
+                        sh 'helm datree test devops_helm/'
+                }
+            }
+
+        }
+      }   
     }
   
 }

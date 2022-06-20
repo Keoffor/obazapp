@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: keoffor/devops-img
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: image_tage
+
+
+service:
+  type: LoadBalancer
+  port: 8002
+  name: devops-service
+  targetPort: 8002
+  portName: service-http
+
+containers:
+  name: reimburse-container
