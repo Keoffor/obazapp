@@ -28,3 +28,9 @@ server:
   port: 8002
   servlet:
     context-path: /
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus"

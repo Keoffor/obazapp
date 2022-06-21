@@ -14,5 +14,9 @@ service:
   targetPort: 8002
   portName: service-http
 
+monitor:
+ name: devops-monitor
+ pathendpoint: "/actuator/prometheus"
+
 containers:
   name: reimburse-container
