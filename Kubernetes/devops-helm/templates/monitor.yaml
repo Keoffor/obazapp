@@ -5,7 +5,7 @@ metadata:
 spec:
  selector:
    matchLabels:
-   app: {{ .Values.service.appName}}
+    app: {{ .Values.service.appName}}
  endpoints:
- - port: {{ .Values.service.portName}}
-   path: {{ .Values.monitor.pathendpoint}}
+  - port: {{ .Values.service.portName}}
+    path: {{ .Values.monitor.pathendpoint}}
