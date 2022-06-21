@@ -57,7 +57,7 @@ pipeline{
                 
                    withCredentials([kubeconfigFile(credentialsId: 'kube-gke', variable: 'KUBECONFIG')]) {
                     dir('Kubernetes/') {
-                         sh 'sudo kubectl get nodes '
+                         sh 'kubectl get nodes'
                     
                      }
                     }
