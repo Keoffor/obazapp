@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    {{- include "devops-helm.labels" . | nindent 4}}
+    app: {{ .Values.service.appName}}
   name: {{ .Values.service.name}}
 spec:
   type: {{ .Values.service.type}}

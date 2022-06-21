@@ -1,11 +1,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
- name: {{ .Release.name}}
+ name: {{ .Values.monitor.name}}
 spec:
  selector:
    matchLabels:
-     {{- include "devops-helm.labels" . | indent 4}}
+     app: {{ .Values.service.appName}}
  endpoints:
    - port: {{ .Values.service.portName}}
      path: {{ .Values.monitor.pathendpoint}}

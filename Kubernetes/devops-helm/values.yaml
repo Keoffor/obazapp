@@ -13,6 +13,7 @@ service:
   name: devops-service
   targetPort: 8002
   portName: service-http
+  appName: service-app
 
 monitor:
  name: devops-monitor
