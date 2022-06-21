@@ -57,7 +57,7 @@ pipeline{
                 
                    withCredentials([kubeconfigFile(credentialsId: 'kube-gke', variable: 'KUBECONFIG')]) {
                     dir('Kubernetes/') {
-                         sh 'kubectl get nodes'
+                         sh 'helm upgrade --install --set image.tag="${VERSION}" devops-apps devops-helm/ '
                     
                      }
                     }
