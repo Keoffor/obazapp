@@ -7,5 +7,5 @@ spec:
    matchLabels:
     {{- include "devops-helm.labels" . | indent 4}}
  endpoints:
-   - port: {{ .Values.service.portName}}
-     path: {{ .Values.monitor.pathendpoint}}
+ - port: {{ .Values.service.portName}}
+   path: {{ .Values.monitor.pathendpoint}}
