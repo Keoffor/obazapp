@@ -51,13 +51,13 @@ pipeline{
                 }
             }
         }
-      stage("Datree configuration check on helm chart"){
+      stage("Deploy to GKE"){
         steps{
             script{
                 
-                   withEnv(['DATREE_TOKEN=1d78c93c-a3c3-42ac-bbd4-4f441a65e0c0']) {
+                   withCredentials([kubeconfigFile(credentialsId: 'kube-gke', variable: 'KUBECONFIG')]) {
                     dir('Kubernetes/') {
-                        sh 'helm datree test/'
+                         sh 'helm upgrade --install --set image.tag="${VERSION}" devops-apps devops-helm/ '
                     
                      }
                     }
