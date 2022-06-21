@@ -61,7 +61,7 @@ pipeline{
                     
                 //      }
                 //     }
-                 sh 'sudo helm datree version'
+                 sh 'helm datree version'
                 }
         }
       }   
