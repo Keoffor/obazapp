@@ -54,9 +54,9 @@ pipeline{
       stage("Datree configuration check on helm chart"){
         steps{
             script{
-                
+                dir('Kubernetes/') {
                    withEnv(['DATREE_TOKEN=1d78c93c-a3c3-42ac-bbd4-4f441a65e0c0']) {
-                    dir('Kubernetes/') {
+                    
                         sh 'datree test devops-helm/'
                     
                      }
