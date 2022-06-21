@@ -61,7 +61,7 @@ pipeline{
                     
                 //      }
                 //     }
-                 sh 'helm datree version'
+                 sh 'datree version'
                 }
         }
       }   
