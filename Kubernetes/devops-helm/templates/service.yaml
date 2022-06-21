@@ -13,15 +13,4 @@ spec:
   selector:
     {{- include "devops-helm.selectorLabels" . | nindent 4}}
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
- name: {{ .Values.monitor.name}}
-spec:
- selector:
-   matchLabels:
-    {{- include "devops-helm.labels" . | nindent 4}}
- endpoints:
-   - port: {{ .Values.service.portName}}
-     path: {{ .Values.monitor.pathendpoint}}
+
