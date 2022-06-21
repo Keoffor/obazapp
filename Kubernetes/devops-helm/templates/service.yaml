@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
   - name: {{ .Values.service.name}}
-    app: {{ .Values.service.appName}}
+    {{- include "devops-helm.labels" . | indent 4}}
   
 spec:
   type: {{ .Values.service.type}}

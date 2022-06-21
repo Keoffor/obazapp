@@ -5,7 +5,7 @@ metadata:
 spec:
  selector:
    matchLabels:
-     app: {{ .Values.service.appName}}
+    {{- include "devops-helm.labels" . | indent 4}}
  endpoints:
    - port: {{ .Values.service.portName}}
      path: {{ .Values.monitor.pathendpoint}}
