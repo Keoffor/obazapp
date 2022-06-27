@@ -17,7 +17,6 @@ service:
 
 monitor:
  name: devops-monitor
- pathendpoint: "/actuator/prometheus"
 
 containers:
   name: reimburse-container
