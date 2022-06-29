@@ -16,7 +16,7 @@ stages:
       - task: SonarCloudPrepare@1
         inputs:
           SonarCloud: 'sonar-dev'
-          organization: 'devops-pros-1'
+          organization: 'devops-pros'
           scannerMode: 'Other'
           extraProperties: |
             # Additional properties that will be passed to the scanner,
