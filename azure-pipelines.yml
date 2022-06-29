@@ -28,6 +28,4 @@ stages:
           mavenVersionOption: 'Default'
           mavenAuthenticateFeed: false
           effectivePomSkip: false
-          sonarQubeRunAnalysis: true
-          isJacocoCoverageReportXML: true
-          sqMavenPluginVersionChoice: 'latest'
+          sonarQubeRunAnalysis: false
