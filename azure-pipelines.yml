@@ -9,32 +9,32 @@ trigger:
 pool: shell-pool
 
 stages:
-- stage: SonarQube check
-  jobs:
-  - job: build
-    steps:
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'sonar-dev'
-        organization: 'devops-pros-1'
-        scannerMode: 'Other'
-        extraProperties: |
-          # Additional properties that will be passed to the scanner,
-          # Put one key=value per line, example:
-          # sonar.exclusions=**/*.bin
-          sonar.projectKey=devops-pros_project-1
-          sonar.projectName=project-1
-    - task: Maven@3
-      inputs:
-        mavenPomFile: 'pom.xml'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        codeCoverageToolOption: 'JaCoCo'
-        javaHomeOption: 'JDKVersion'
-        mavenVersionOption: 'Default'
-        mavenAuthenticateFeed: false
-        effectivePomSkip: false
-        sonarQubeRunAnalysis: true
-        isJacocoCoverageReportXML: true
-        sqMavenPluginVersionChoice: 'latest'
+  - stage: SonarQube check
+    jobs:
+    - job: build
+      steps:
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'sonar-dev'
+          organization: 'devops-pros-1'
+          scannerMode: 'Other'
+          extraProperties: |
+            # Additional properties that will be passed to the scanner,
+            # Put one key=value per line, example:
+            # sonar.exclusions=**/*.bin
+            sonar.projectKey=devops-pros_project-1
+            sonar.projectName=project-1
+      - task: Maven@3
+        inputs:
+          mavenPomFile: 'pom.xml'
+          publishJUnitResults: true
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          codeCoverageToolOption: 'JaCoCo'
+          javaHomeOption: 'JDKVersion'
+          mavenVersionOption: 'Default'
+          mavenAuthenticateFeed: false
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: true
+          isJacocoCoverageReportXML: true
+          sqMavenPluginVersionChoice: 'latest'
 
