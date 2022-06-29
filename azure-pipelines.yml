@@ -8,6 +8,10 @@ trigger:
 
 pool: shell-pool
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: SonarQube check
+  jobs:
+  - job: build and deploy package
+    steps:
+    - 
+
