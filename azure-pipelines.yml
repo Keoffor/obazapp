@@ -18,12 +18,6 @@ stages:
           SonarCloud: 'sonar'
           organization: 'johndesk'
           scannerMode: 'Other'
-          extraProperties: |
-            # Additional properties that will be passed to the scanner,
-            # Put one key=value per line, example:
-            # sonar.exclusions=**/*.bin
-            sonar.projectKey=johndesk_project-1
-            sonar.projectName=project-1
       - task: Maven@3
         inputs:
           mavenPomFile: 'pom.xml'
